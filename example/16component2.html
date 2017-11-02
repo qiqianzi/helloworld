@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="../src/assets/js/vue.js"></script>
+  <title>componet</title>
+</head>
+<body>
+<h1>componet</h1>
+<hr>
+<div id="app">
+  <panda></panda>
+</div>
+
+
+<script type="text/javascript">
+  var city={
+    template:`<div style="color: green;">sichuan of China</div>`
+  }
+
+  var pandaComponent={
+      template:`<div style="color: red;">
+      <p>Panda from China</p>
+      <city></city>
+      </div>`,
+      components:{
+          "city":city
+      }
+  }
+
+  var app=new Vue({
+    el:'#app',
+    components:{
+      "panda":pandaComponent
+    }
+
+  })
+
+</script>
+</body>
+</html>
+<!--指令：定义的是标签属性-->
+<!--组件：定义的是标签-->

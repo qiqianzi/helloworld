@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="../src/assets/js/vue.js"></script>
+  <title>vue.directive</title>
+</head>
+<body>
+<h1>Hello World</h1>
+<hr>
+<div id="app">
+  <div v-aaa="color">{{num}}</div>
+  <p><button @click="add">ADD</button></p>
+</div>
+
+<script type="text/javascript">
+//  Vue.directive("aaa",function(el,binding){
+//      console.log(el);//<div style="color: green;">10</div>
+//      console.log(binding);
+//      //{name: "aaa", rawName: "v-aaa", value: "green", expression: "color", modifiers: {…}, …}
+//      console.log(binding.name);//aaa
+//
+//      el.style="color:"+binding.value;
+//  })
+
+//  el.style="color:"+binding.value;
+
+  Vue.directive("aaa",{
+    bind:function(){//被绑定
+      console.log('1 - bind');
+    },
+    inserted:function(){//绑定到节点
+      console.log('2 - inserted');
+    },
+    update:function(){//组件更新
+      console.log('3 - update');
+    },
+    componentUpdated:function(){//组件更新完成
+      console.log('4 - componentUpdated');
+    },
+    unbind:function(){//解绑
+      console.log('1 - bind');
+    }
+  })
+
+  var app=new Vue({
+    el:'#app',
+    data:{
+      num:10,
+      color:'green'
+    },
+    methods:{
+        add:function () {
+          this.num++;
+        }
+    }
+  })
+</script>
+</body>
+</html>

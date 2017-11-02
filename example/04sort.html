@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="../src/assets/js/vue.js"></script>
+  <title>V-for 案例</title>
+</head>
+<body>
+<h1>v-for指令用法</h1>
+<hr>
+<div id="app">
+  <ul>
+    <li v-for="(student,index) in students">
+      {{index}}：{{student.name}} - {{student.age}}
+    </li>
+    <br>
+    {{sortStudent}}
+  </ul>
+</div>
+
+<script type="text/javascript">
+  //数组对象方法排序:
+  function sortByKey(array,key){
+    return array.sort(function(a,b){
+      var x=a[key];
+      var y=b[key];
+      return ((x<y)?-1:((x>y)?1:0));
+    });
+  }
+
+  var app=new Vue({
+    el:'#app',
+    data:{
+      students:[
+        {name:'jspang',age:32},
+        {name:'Panda',age:30},
+        {name:'PanPaN',age:21},
+        {name:'King',age:45}
+      ]
+    },
+    computed:{
+      sortStudent:function(){
+        return sortByKey(this.students,'age');
+      }
+    }
+  })
+</script>
+</body>
+</html>
+
+<!--0：PanPaN - 21-->
+<!--1：Panda - 30-->
+<!--2：jspang - 32-->
+<!--3：King - 45-->
+
+<!--[ { "name": "PanPaN", "age": 21 }, { "name": "Panda", "age": 30 }, { "name": "jspang", "age": 32 }, { "name": "King", "age": 45 } ]-->

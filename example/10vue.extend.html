@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="../src/assets/js/vue.js"></script>
+  <title>vue.extend</title>
+</head>
+<body>
+<h1>Vue.extend</h1>
+<hr>
+<author></author>
+<div id="author"></div>
+
+<script type="text/javascript">
+var authorURL=Vue.extend({
+  template:"<p><a :href='authorURL'>{{authorName}}</a></p>",
+  data:function () {
+    return{
+        authorName:'aaa',
+        authorURL:'http://baidu.com/'
+    }
+  }
+});
+
+  new authorURL().$mount("author");
+  new authorURL().$mount("#author");
+</script>
+</body>
+</html>
